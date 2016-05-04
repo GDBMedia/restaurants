@@ -1,20 +1,23 @@
 <div class="jumbotron">
 <h1>$cuisine</h1>
 </div>
-<h1>List of Restaurants</h1>
-#foreach($restaurant in $restaurants)
+#if($restaurants.size() > 0)
+  <h1>List of Restaurants</h1>
   <h2><ol>
-  <li><a href="/$restaurant.getName()">$restaurant.getName()</a>
-      <ul><li><h4><span style="font-weight: bold;">Best Dish:<span> $restaurant.getDish()</h4></li>
-      </ul></li>
+  #foreach($restaurant in $restaurants)
+
+    <li><a href="/$restaurant.getUrlName()">$restaurant.getName()</a>
+        <ul><li><h4>Best Dish: $restaurant.getDish()</h4></li>
+        </ul></li>
+    <hr>
+  #end
   </ol></h2>
-  <hr>
 #end
 <h2>Add new $cuisine Place</h2>
 <form action="/restaurant-success" method="post">
   <div class="form-group">
-    <label for="nameOfResturant">Name of Restaurant</label>
-    <input id="nameOfResturant" name="nameOfResturant" type="text" class="form-control">
+    <label for="nameOfRestaurant">Name of Restaurant</label>
+    <input id="nameOfRestaurant" name="nameOfRestaurant" type="text" class="form-control">
     <input id="cuisine" name="cuisine" type="hidden" value="$cuisine">
   </div>
 

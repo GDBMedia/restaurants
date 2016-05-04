@@ -19,6 +19,11 @@ public class Restaurant {
     return rest;
   }
 
+  public String getUrlName() {
+    String urlRest = rest.replaceAll(" ", "-");
+    return urlRest;
+  }
+
   public String getCuisine() {
     return cuisine;
   }
@@ -58,14 +63,14 @@ public class Restaurant {
     }
   }
 
-  // public List<Patient> getPatients() {
-  //   try(Connection con = DB.sql2o.open()) {
-  //     String sql = "SELECT * FROM patients where doctorid=:id";
-  //     return con.createQuery(sql)
-  //     .addParameter("id", this.id)
-  //     .executeAndFetch(Patient.class);
-  //   }
-  // }
+  public List<Review> getReviews() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM reviews where rest=:rest";
+      return con.createQuery(sql)
+      .addParameter("rest", this.rest)
+      .executeAndFetch(Review.class);
+    }
+  }
 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
@@ -80,11 +85,11 @@ public class Restaurant {
     }
   }
 
-  public static Restaurant find(int id) {
+  public static Restaurant find(String rest) {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "SELECT * FROM rests where id=:id";
+      String sql = "SELECT * FROM rests where rest=:rest";
       return con.createQuery(sql)
-      .addParameter("id", id)
+      .addParameter("rest", rest)
       .executeAndFetchFirst(Restaurant.class);
     }
   }

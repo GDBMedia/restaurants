@@ -32,14 +32,14 @@ public class App {
     post("/restaurant-success", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
 
-      String nameOfResturant = request.queryParams("nameOfResturant");
+      String nameOfRestaurant = request.queryParams("nameOfRestaurant");
       String cuisine = request.queryParams("cuisine");
       String description = request.queryParams("description");
       String dish = request.queryParams("dish");
-      Restaurant newResaurant = new Restaurant(nameOfResturant, cuisine, description, dish);
-      newResaurant.save();
+      Restaurant newRestaurant = new Restaurant(nameOfRestaurant, cuisine, description, dish);
+      newRestaurant.save();
 
-      model.put("restaurant", nameOfResturant);
+      model.put("restaurant", nameOfRestaurant);
       model.put("cuisine", cuisine);
       model.put("template", "templates/restaurant-success.vtl");
       return new ModelAndView(model, layout);
@@ -49,9 +49,31 @@ public class App {
     get("/:restaurant", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       String rest = request.params(":restaurant");
-      String restaurant = rest.replaceAll("%20", " ");
-      model.put("restaurant", restaurant);
+      String restaurant = rest.replaceAll("-", " ");
+      Restaurant newRestaurant = Restaurant.find(restaurant);
+      model.put("rest", restaurant);
+      model.put("reviews", newRestaurant.getReviews());
+      model.put("restaurant", newRestaurant);
       model.put("template", "templates/restaurant.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/review-success", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+
+      String name = request.queryParams("name");
+      String rest = request.queryParams("rest");
+      String review = request.queryParams("review");
+      String restUrl = request.queryParams("restUrl");
+
+
+      Review newReview = new Review(name, rest, review);
+      newReview.save();
+
+      model.put("restUrl", restUrl);
+      model.put("name", name);
+      model.put("rest", rest);
+      model.put("template", "templates/review-success.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 

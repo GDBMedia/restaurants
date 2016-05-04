@@ -1,4 +1,32 @@
 <div class="jumbotron">
-<h1>$restaurant</h1>
+<h1>$restaurant.getName()</h1>
 </div>
-<h3>Keytar chambray hella flannel, church-key whatever post-ironic neutra selfies. Pour-over tote bag mumblecore, authentic next level venmo chillwave bicycle rights single-origin coffee fashion axe food truck migas tattooed DIY photo booth. Brunch cronut leggings small batch, stumptown sriracha letterpress hashtag wolf master cleanse. Green juice knausgaard schlitz, tattooed fingerstache 8-bit bicycle rights mixtape gastropub small batch fanny pack fixie. Pinterest meditation hoodie, selvage godard vegan shoreditch synth viral flannel drinking vinegar. Sustainable franzen schlitz, plaid jean shorts venmo direct trade raw denim tattooed. Stumptown ethical VHS, XOXO iPhone artisan sustainable godard church-key jean shorts.</h3>
+<h2>Description:</h2>
+<h4>$restaurant.getDescription()</h4>
+<h2>Best Dish:</h2>
+<h4>$restaurant.getDish()</h4>
+<hr>
+#if($reviews.size() > 0)
+  <h2>Reviews</h2>
+  #foreach($review in $reviews)
+    <h4>Name: $review.getName()</h4>
+    <h4>Review: $review.getReview()</h4>
+    <hr>
+  #end
+#end
+
+<h2>Add a Review</h2>
+<form action="/review-success" method="post">
+  <div class="form-group">
+    <label for="name">Your Name</label>
+    <input id="name" name="name" type="text" class="form-control">
+    <input id="rest" name="rest" type="hidden" value="$restaurant.getName()">
+    <input id="restUrl" name="restUrl" type="hidden" value="$rest">
+  </div>
+
+  <div class="form-group">
+    <label for="review">Enter your Review</label>
+    <input id="review" name="review" type="text" class="form-control">
+  </div>
+  <button class="btn btn-lg btn-success" type="submit">Submit</button>
+</form>
