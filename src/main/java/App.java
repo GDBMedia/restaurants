@@ -20,7 +20,7 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    get("/:cuisine/restaurants", (request, response) -> {
+    get("cuisines/:cuisine/restaurants", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       String cuisine = request.params(":cuisine");
       model.put("cuisine", cuisine);
@@ -46,7 +46,7 @@ public class App {
     }, new VelocityTemplateEngine());
 
 
-    get("/:restaurant", (request, response) -> {
+    get("cuisines/:cuisine/restaurants/:restaurant", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       String rest = request.params(":restaurant");
       String restaurant = rest.replaceAll("-", " ");

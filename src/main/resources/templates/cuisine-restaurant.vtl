@@ -6,7 +6,7 @@
   <h2><ol>
   #foreach($restaurant in $restaurants)
 
-    <li><a href="/$restaurant.getUrlName()">$restaurant.getName()</a>
+    <li><a class="link" href="restaurants/$restaurant.getUrlName()">$restaurant.getName()</a>
         <ul><li><h4>Best Dish: $restaurant.getDish()</h4></li>
         </ul></li>
     <hr>

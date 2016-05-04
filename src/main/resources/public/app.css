@@ -1,6 +1,9 @@
 .jumbotron{
   text-align: center;
 }
-h1{
-  color: red;
+.link a{
+    color: #ae0015 !important;
+}
+.link a:hover {
+    color: #790312 !important;
 }

@@ -13,6 +13,9 @@ public class Review {
 
   public Review(String name, String rest, String review) {
     this.name = name;
+    if(name.equals("")){
+      this.name = "Anonymous";
+    }
     this.rest = rest;
     this.review = review;
 
