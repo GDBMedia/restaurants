@@ -66,7 +66,6 @@ public class App {
       String review = request.queryParams("review");
       String restUrl = request.queryParams("restUrl");
 
-
       Review newReview = new Review(name, rest, review);
       newReview.save();
 
