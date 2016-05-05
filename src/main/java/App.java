@@ -77,37 +77,5 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-
-    // get("/patients", (request, response) -> {
-    //   Map<String, Object> model = new HashMap<String, Object>();
-    //   model.put("patients", Patient.all());
-    //   model.put("template", "templates/patients.vtl");
-    //   return new ModelAndView(model, layout);
-    // }, new VelocityTemplateEngine());
-    //
-    // get("/doctors/:id", (request, response) -> {
-    //   HashMap<String, Object> model = new HashMap<String, Object>();
-    //   Doctor doctor = Doctor.find(Integer.parseInt(request.params(":id")));
-    //   model.put("doctor", doctor);
-    //   model.put("template", "templates/doctor.vtl");
-    //   return new ModelAndView(model, layout);
-    // }, new VelocityTemplateEngine());
-    //
-    // get("/specialties", (request, response) -> {
-    //   Map<String, Object> model = new HashMap<String, Object>();
-    //   model.put("specialties", Doctor.allSpecialties());
-    //   model.put("template", "templates/specialties.vtl");
-    //   return new ModelAndView(model, layout);
-    // }, new VelocityTemplateEngine());
-    //
-    // get("/specialties/:specialty", (request, response) -> {
-    //   Map<String, Object> model = new HashMap<String, Object>();
-    //   String specialty = request.params(":specialty");
-    //   model.put("specialty", specialty);
-    //   model.put("doctors", Doctor.listDoctorsBySpec(specialty));
-    //   model.put("template", "templates/specialty.vtl");
-    //   return new ModelAndView(model, layout);
-    // }, new VelocityTemplateEngine());
-
   }
 }
