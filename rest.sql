@@ -182,7 +182,10 @@ COPY rests (id, rest, cuisine, description, dish) FROM stdin;
 1	Sizzle Pie	Pizza	Classic and unconventional pizza, a selection of vegan, veggie & omnivore options. 35+ beers, wine and a great jukebox. Gluten free options available.	Pig Destroyer
 2	Gilda's Italian Restaurant	Italian	We firmly believe that the best food is prepared simply, using the best possible ingredients and made with love – the same type of food you would experience in Italian homes, whether they be here or in Italy. We would like to invite you to join us at our family dinner table and experience that love and passion for great food.	Lasagne
 3	Ristorante Roma	Italian	Informal trattoria offers traditional Italian meals in a snug space adorned with European paintings.	lobster ravioli
-4	five guys	Burger	foood	burger
+4	Five Guys	Burger	foood	burger
+5	Don Pedro	Food Carts	A Mexican food cart that has authentic Mexican food	Burrito
+6	PePe's	Mexican	Homestule Mexican food	Burrito
+14	Chipotle	Mexican	Delicious urban healthy food 	hard shell tacos
 \.
 
 
@@ -190,7 +193,7 @@ COPY rests (id, rest, cuisine, description, dish) FROM stdin;
 -- Name: rests_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('rests_id_seq', 4, true);
+SELECT pg_catalog.setval('rests_id_seq', 14, true);
 
 
 --
@@ -201,6 +204,8 @@ COPY reviews (id, name, rest, review) FROM stdin;
 1	billy	Gilda's Italian Restaurant	the lasagne was amazing
 2	Garrett	Ristorante Roma	The Pasta dishes are incredible
 3	Jimmy	Ristorante Roma	Didn't like the service but the food was good
+6	Jacob	Don Pedro	They Count Your Sauces!!!! Dont go there
+9	John	Gilda's Italian Restaurant	Amazing Pasta
 \.
 
 
@@ -208,7 +213,7 @@ COPY reviews (id, name, rest, review) FROM stdin;
 -- Name: reviews_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('reviews_id_seq', 5, true);
+SELECT pg_catalog.setval('reviews_id_seq', 9, true);
 
 
 --
