@@ -1,1 +1,1 @@
-web: ./build/install/rest/bin/rest
+web: ./build/install/Fooder/bin/Fooder
