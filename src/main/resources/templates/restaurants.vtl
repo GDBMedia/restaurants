@@ -32,10 +32,41 @@
  </div>
 <!-- Navbar -->
 <div class="jumbotron">
-  <h1>Success!</h1>
+<h1>All Restaurants</h1>
 </div>
 <div class="container cback">
-$name, your review for $rest has been saved.
+<h2><ol>
+#foreach($restaurant in $restaurants)
+  <li><a class="link" href="restaurants/$restaurant.getUrlName()">$restaurant.getName()</a>
+      <ul><li><h4>Best Dish: $restaurant.getDish()</h4></li>
+      </ul></li>
+      <hr>
+#end
+</ol></h2>
+<h2>Add new Restaurant</h2>
+<form action="/restaurant-success" method="post">
+  <div class="form-group">
+    <label for="nameOfRestaurant">Name of Restaurant</label>
+    <input id="nameOfRestaurant" name="nameOfRestaurant" type="text" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="cuisine">Cuisine Type:</label>
+    <select id="cuisine" name="cuisine" class="form-control">
+      #foreach($cuisine in $cuisines)
+        <option value="$cuisine">$cuisine</option>
+      #end
+    </select>
+  </div>
 
-<a href="restaurants/$restUrl">Go back to $rest</a>
+  <div class="form-group">
+    <label for="description">Enter your Description</label>
+    <input id="description" name="description" type="text" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="dish">Best Dish</label>
+    <input id="dish" name="dish" type="text" class="form-control">
+  </div>
+  <button class="btn btn-lg btn-success" type="submit">Submit</button>
+</form>
 </div>

@@ -29,10 +29,6 @@ public class Review {
     return rest;
   }
 
-  public int getId() {
-    return id;
-  }
-
   public String getReview() {
     return review;
   }
@@ -55,6 +51,17 @@ public class Review {
       .getKey();
     }
   }
+
+
+    @Override
+    public boolean equals(Object otherReview) {
+      if (!(otherReview instanceof Review)) {
+        return false;
+      } else {
+        Review newReview = (Review) otherReview;
+        return this.getReview().equals(newReview.getReview());
+      }
+    }
 
   public static Review find(String rest) {
     try(Connection con = DB.sql2o.open()) {

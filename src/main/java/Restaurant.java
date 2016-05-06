@@ -20,7 +20,7 @@ public class Restaurant {
   }
 
   public String getUrlName() {
-    String urlRest = rest.replaceAll(" ", "-");
+    String urlRest = getName().replaceAll(" ", "-");
     return urlRest;
   }
 
@@ -36,16 +36,13 @@ public class Restaurant {
     return dish;
   }
 
-  public int getId() {
-    return id;
-  }
-
   public static List<Restaurant> all() {
     String sql = "SELECT * FROM rests ORDER BY rest ASC";
     try(Connection con = DB.sql2o.open()) {
       return con.createQuery(sql).executeAndFetch(Restaurant.class);
     }
   }
+
   public static List<String> allCuisines() {
     String sql = "SELECT cuisine FROM cuisines";
     try(Connection con = DB.sql2o.open()) {
@@ -82,6 +79,16 @@ public class Restaurant {
       .addParameter("dish", this.dish)
       .executeUpdate()
       .getKey();
+    }
+  }
+
+  @Override
+  public boolean equals(Object otherRestaurant) {
+    if (!(otherRestaurant instanceof Restaurant)) {
+      return false;
+    } else {
+      Restaurant newRestaurant = (Restaurant) otherRestaurant;
+      return this.getDescription().equals(newRestaurant.getDescription());
     }
   }
 

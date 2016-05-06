@@ -1,7 +1,45 @@
+<!-- Navbar -->
+ <div class="navbar navbar-inverse navbar-fixed-top">
+     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+       <span class="icon-bar"></span>
+       <span class="icon-bar"></span>
+       <span class="icon-bar"></span>
+     </button>
+     <div class="container">
+     <a class="navbar-brand text-muted" href="/"><span class="bigger">Fooder</span></a>
+     <div class="collapse navbar-collapse">
+       <ul class="nav navbar-nav navbar-right">
+         <li><a href="/"><span class="white">Home</span></a></li>
+         <li class="dropdown">
+         <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="white">Cuisines</span><span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            #foreach($navcuisine in $navcuisines)
+              <li><a href="/cuisines/$navcuisine/restaurants">$navcuisine</a></li>
+            #end
+          </ul>
+        </li>
+         <li class="dropdown">
+         <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="white">Restaurants</span><span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            #foreach($navrestaurant in $navrestaurants)
+              <li><a href="/restaurants/$navrestaurant.getUrlName()">$navrestaurant.getName()</a></li>
+            #end
+          </ul>
+        </li>
+       </ul>
+     </div>
+   </div>
+ </div>
+<!-- Navbar -->
 <div class="jumbotron">
 <h1>Fooder!</h1>
 </div>
+<div class="container">
 #foreach($cuisine in $cuisines)
-  <h2><a href="cuisines/$cuisine/restaurants">$cuisine</a></h2>
+  <a href="/cuisines/$cuisine/restaurants"><button class="btn btn-wide btn-mycolor">
+      <h2 class="cuisine">$cuisine</h2>
+  </button></a>
   <hr>
 #end
+<a href="/restaurants"><button class="btn btn-wide"><h2>All Restaurants</h2></button></a>
+</div>
